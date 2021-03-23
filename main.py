@@ -5,8 +5,6 @@
 # @Author  : yuruhao
 
 from fastapi import FastAPI
-
-from fastapi import FastAPI
 import os
 # from fastapi.openapi.docs import (
 #     get_redoc_html,
@@ -19,8 +17,11 @@ from base.index import router as index_router
 from base.exchange import router as exchange_router
 from base.usercenter import router as usercenter_router
 
-app = FastAPI(docs_url=None, redoc_url=None, title='书籍互换', version='1.0.0',
+app = FastAPI(title='书籍互换', version='1.0.0',
               description='你是否有很多看过的旧书？你是否想得到没看过的新书？何不在这里进行交换？')
+#
+# app = FastAPI(docs_url=None, redoc_url=None, title='书籍互换', version='1.0.0',
+#               description='你是否有很多看过的旧书？你是否想得到没看过的新书？何不在这里进行交换？')
 
 # static_path = os.path.join(os.path.basename(__file__), "../..")
 # root = os.path.abspath(static_path)
@@ -39,4 +40,4 @@ app = FastAPI(docs_url=None, redoc_url=None, title='书籍互换', version='1.0.
 #     )
 
 
-app.include_router(index_router)
+app.include_router(usercenter_router)
