@@ -17,5 +17,5 @@ class Books(Base):
     new_percent = Column(Float)
     author = Column(String(30))
     pub_com = Column(String(100))
-    pub_time = Column(DateTime, onupdate=datetime.now)
+    pub_time = Column(DateTime, default=datetime.now)
     update_time = Column(DateTime, onupdate=datetime.now, default=datetime.now)

@@ -25,7 +25,7 @@ class Article(Base):
     read_num = Column(Integer, default=0)
     status = Column(Enum('draft', 'normal', 'delete'), default='draft')
     comments = relationship('Comment')
-    pub_time = Column(DateTime, onupdate=datetime.now)
+    pub_time = Column(DateTime, default=datetime.now)
     update_time = Column(DateTime, onupdate=datetime.now, default=datetime.now)
 
 
