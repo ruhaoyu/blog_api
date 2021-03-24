@@ -13,7 +13,9 @@ from fastapi import FastAPI
 # from fastapi.staticfiles import StaticFiles
 
 from apps.user.usercenter import router as usercenter_router
-from apps.blog.api import router as blog_router
+from apps.blog.api import router
+from base.test import router
+
 
 app = FastAPI(title='简书', version='1.0.0',
               description='一个优质创作社区')

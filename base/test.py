@@ -5,8 +5,8 @@
 # @Author  : yuruhao
 from fastapi import Query
 
+from apps.books.models import Books
 from base.basemodel import BookItem
-from apps.blog.models import Books
 from db.mysql import session
 from base.parsedata import return_data
 from routers import router

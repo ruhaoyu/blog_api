@@ -12,13 +12,12 @@ from sqlalchemy.orm import relationship
 from db.mysql import Base
 
 
-class Aticle(Base):
+class Article(Base):
     __tablename__ = 'article'
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String(10), nullable=False)
     detail = Column(LONGTEXT, nullable=False)
-    author = relationship('User')
-    article_id = Column(Integer, ForeignKey('user.id'))
+    user_id = Column(Integer)
     type = Column(Enum('public', 'private'), default='public')
     free = Column(Boolean, default=True)
     like_num = Column(Integer, default=0)

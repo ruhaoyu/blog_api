@@ -4,13 +4,6 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-import sys
-from apps.blog import models as blog_models
-from apps.books import models as book_models
-from apps.msg import models as msg_models
-from apps.news import models as news_models
-from apps.user import models as user_models
-
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -24,13 +17,7 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-user_metadata = user_models.Base.metadata
-
-# 把当前项目路径加入到path中
-sys.path.insert(0, "..")
-
-target_metadata = user_metadata
-
+target_metadata = None
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
