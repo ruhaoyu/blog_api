@@ -5,5 +5,7 @@
 # @Author  : yuruhao
 
 
-def return_data(msg='ok', code=200, data=''):
-    return {'msg': msg, 'code': code, 'data': data}
+def return_data(msg='ok', code=200, data='', data_list=''):
+    if not data_list:
+        data_list = []
+    return {'msg': msg, 'code': code, 'data': data, 'data_list': data_list}

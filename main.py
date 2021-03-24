@@ -13,9 +13,10 @@ from fastapi import FastAPI
 # from fastapi.staticfiles import StaticFiles
 
 from apps.user.usercenter import router as usercenter_router
+from apps.blog.api import router as blog_router
 
-app = FastAPI(title='书籍互换', version='1.0.0',
-              description='你是否有很多看过的旧书？你是否想得到没看过的新书？何不在这里进行交换？')
+app = FastAPI(title='简书', version='1.0.0',
+              description='一个优质创作社区')
 #
 # app = FastAPI(docs_url=None, redoc_url=None, title='书籍互换', version='1.0.0',
 #               description='你是否有很多看过的旧书？你是否想得到没看过的新书？何不在这里进行交换？')
