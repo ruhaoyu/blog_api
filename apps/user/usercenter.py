@@ -3,9 +3,10 @@
 # @File    : usercenter.py
 # @Date    : 2021-03-18
 # @Author  : yuruhao
-from base_enum import LoginNameEnum
-from db.mysql import User, session
-from parsedata import return_data
+from apps.user.models import User
+from base.base_enum import LoginNameEnum
+from db.mysql import session
+from base.parsedata import return_data
 from routers import router
 
 

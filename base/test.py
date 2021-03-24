@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 # 书籍交换
-# @File    : exchange.py
+# @File    : test.py
 # @Date    : 2021-03-22
 # @Author  : yuruhao
 from fastapi import Query
-from pydantic import BaseModel
 
 from base.basemodel import BookItem
-from db.mysql import session, Books
-from parsedata import return_data
+from apps.blog.models import Books
+from db.mysql import session
+from base.parsedata import return_data
 from routers import router
 
 
