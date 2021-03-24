@@ -4,7 +4,7 @@
 # @Date    : 2021-03-18
 # @Author  : yuruhao
 
-from parsedata import return_data
+from base.parsedata import return_data
 from routers import router
 
 

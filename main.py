@@ -5,7 +5,6 @@
 # @Author  : yuruhao
 
 from fastapi import FastAPI
-import os
 # from fastapi.openapi.docs import (
 #     get_redoc_html,
 #     get_swagger_ui_html,
@@ -13,9 +12,7 @@ import os
 # )
 # from fastapi.staticfiles import StaticFiles
 
-from base.index import router as index_router
-from base.exchange import router as exchange_router
-from base.usercenter import router as usercenter_router
+from apps.user.usercenter import router as usercenter_router
 
 app = FastAPI(title='书籍互换', version='1.0.0',
               description='你是否有很多看过的旧书？你是否想得到没看过的新书？何不在这里进行交换？')

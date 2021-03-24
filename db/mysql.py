@@ -9,22 +9,3 @@ DBSession = sessionmaker(bind=engine)
 Base = declarative_base()
 session = DBSession()
 
-
-class User(Base):
-    __tablename__ = 'user'
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    login_name = Column(String(20))
-    cn_name = Column(String(20))
-    en_name = Column(String(20))
-    password = Column(String(20))
-
-
-class Books(Base):
-    __tablename__ = 'books'
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    title = Column(String(100))
-    new_percent = Column(String(10))
-    author = Column(String(30))
-    pub_com = Column(String(100))
