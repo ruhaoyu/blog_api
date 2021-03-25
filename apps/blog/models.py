@@ -34,5 +34,5 @@ class Comment(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     detail = Column(String(200), nullable=False)
     img_url = Column(String(100))
-    pub_time = Column(DateTime, onupdate=datetime.now)
+    pub_time = Column(DateTime, default=datetime.now)
     article_id = Column(Integer, ForeignKey('article.id'))
