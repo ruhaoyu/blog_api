@@ -19,7 +19,7 @@ def get_article_list(status: ArticleStatusEnum, article_type: str = 'public', fr
     article_obj_list = session.query(Article).filter(
         and_(Article.status == status.value, Article.type == article_type, Article.free == free))
     if user_id:
-        article_obj_list = article_obj_list.filter(Article.user_id==user_id)
+        article_obj_list = article_obj_list.filter(Article.user_id == user_id)
     return return_data(data_list=article_obj_list.all())
 
 
