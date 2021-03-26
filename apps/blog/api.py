@@ -3,6 +3,8 @@
 # @File    : api.py
 # @Date    : 2021-03-24
 # @Author  : yuruhao
+from typing import List
+
 from sqlalchemy import Enum, and_
 
 from apps.blog.blog_enum import ArticleStatusEnum
@@ -52,3 +54,8 @@ async def add_comment(article_id: int, comment: AddCommentItem):
     session.add(comment_obj)
     session.commit()
     return return_data()
+
+
+@router.post('/delete/article')
+async def delete_article(article_ids: List[int]):
+    return return_data(data_list=article_ids)
