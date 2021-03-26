@@ -21,11 +21,20 @@ async def public_article(article: ArticleItem):
     return return_data()
 
 
-@router.get('/article/{id}')
-async def article_detail(id: int):
-    article_obj = session.query(Article).get(id)
+@router.get('/article/{article_id}')
+async def article_detail(article_id: int):
+    article_obj = session.query(Article).get(article_id)
     comments = article_obj.comments
     return return_data(data=article_obj)
+
+
+@router.get('/like/article/{article_id')
+async def like_article(article_id: int):
+    article_obj = session.query(Article).get(article_id)
+    article_obj.like_num += 1
+    session.commit()
+    # todo 生成一条谁点赞谁的文章记录
+    return return_data()
 
 
 @router.get('/article/list/')
