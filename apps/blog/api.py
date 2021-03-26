@@ -6,6 +6,7 @@
 from typing import List
 
 from sqlalchemy import Enum, and_
+from sqlalchemy.testing import in_
 
 from apps.blog.blog_enum import ArticleStatusEnum
 from apps.blog.items import ArticleItem, AddCommentItem
@@ -56,6 +57,8 @@ async def add_comment(article_id: int, comment: AddCommentItem):
     return return_data()
 
 
-@router.post('/delete/article')
-async def delete_article(article_ids: List[int]):
+@router.post('/update/article/status')
+async def updata_article_status(article_ids: List, status: ArticleStatusEnum):
+    session.query(Article).filter(Article.id.in_(article_ids)).update({'status': status.value})
+    session.commit()
     return return_data(data_list=article_ids)
