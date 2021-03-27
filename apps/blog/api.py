@@ -57,5 +57,5 @@ async def add_comment(article_id: int, comment: AddCommentItem):
 
 
 @router.post('/delete/article')
-async def delete_article(article_ids: List[int]):
-    return return_data(data_list=article_ids)
+async def update_article(article_ids: List[int], status: ArticleStatusEnum):
+    return return_data(data_list=article_ids, data=status)

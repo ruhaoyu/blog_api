@@ -10,3 +10,4 @@ from enum import Enum
 class ArticleStatusEnum(Enum):
     draft = 'draft'
     normal = 'normal'
+    delete = 'delete'
