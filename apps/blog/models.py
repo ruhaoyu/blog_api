@@ -36,3 +36,4 @@ class Comment(Base):
     img_url = Column(String(100))
     pub_time = Column(DateTime, default=datetime.now)
     article_id = Column(Integer, ForeignKey('article.id'))
+    user_id = Column(Integer, ForeignKey('user.id'))

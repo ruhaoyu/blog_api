@@ -12,7 +12,7 @@ from fastapi import FastAPI
 # )
 # from fastapi.staticfiles import StaticFiles
 
-from apps.user.usercenter import router as usercenter_router
+from apps.user.api import router
 from apps.blog.api import router
 from base.test import router
 
@@ -40,4 +40,4 @@ app = FastAPI(title='简书', version='1.0.0',
 #     )
 
 
-app.include_router(usercenter_router)
+app.include_router(router)

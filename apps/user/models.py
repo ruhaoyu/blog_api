@@ -6,6 +6,7 @@
 from datetime import datetime
 
 from sqlalchemy import Column, Integer, String, Date, DateTime
+from sqlalchemy.orm import relationship
 
 from db.mysql import Base
 
@@ -27,3 +28,4 @@ class User(Base):
     school = Column(String(30), nullable=True)
     update_time = Column(DateTime, onupdate=datetime.now, default=datetime.now)
     create_time = Column(DateTime, default=datetime.now)
+    comments = relationship('Comment')
