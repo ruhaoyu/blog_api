@@ -5,6 +5,7 @@
 # @Author  : yuruhao
 from typing import List
 
+from fastapi import Cookie
 from sqlalchemy import Enum, and_
 from sqlalchemy.testing import in_
 
@@ -21,7 +22,7 @@ blog_router = APIRouter()
 
 @blog_router.post('/pub/article/')
 async def public_article(article: ArticleItem):
-    article_obj = Article(title=article.title, detail=article.detail)
+    article_obj = Article(**article.dict())
     session.add(article_obj)
     session.commit()
     return return_data()
@@ -65,3 +66,15 @@ async def updata_article_status(status: ArticleStatusEnum, article_ids: List[int
     session.query(Article).filter(Article.id.in_(article_ids)).update({'status': status})
     session.commit()
     return return_data(data_list=article_ids)
+
+
+@router.get('/newst/comment/list/{user_id}')
+async def newst_comment_list(user_id: int):
+    comments_list = session.query(Comment).filter()
+    return return_data()
+
+
+@router.get('/test/cookies/')
+async def test(cookie: str = Cookie(None)):
+    print(cookie)
+    return return_data(data=cookie)

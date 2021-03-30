@@ -3,7 +3,7 @@
 @author: rrh
 @time: 2021/3/27 10:26 下午
 """
-from fastapi import Query, APIRouter
+from fastapi import Query, APIRouter, Form
 
 from apps.books.models import Books
 from base.basemodel import BookItem
@@ -42,3 +42,9 @@ async def post(book: BookItem):
     session.commit()
     session.close()
     return return_data(data={"title": book.title})
+
+
+@book_router.get('/book/list/')
+async def book_list(user_id:int=Form(None)):
+    books = session.query(Books).all()
+    return return_data(data_list=books)
