@@ -3,3 +3,5 @@
 # @File    : __init__.py.py
 # @Date    : 2021-03-24
 # @Author  : yuruhao
+
+from apps.user.api import user_router
