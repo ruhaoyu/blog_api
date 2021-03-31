@@ -68,13 +68,13 @@ async def updata_article_status(status: ArticleStatusEnum, article_ids: List[int
     return return_data(data_list=article_ids)
 
 
-@router.get('/newst/comment/list/{user_id}')
+@blog_router.get('/newst/comment/list/{user_id}')
 async def newst_comment_list(user_id: int):
     comments_list = session.query(Comment).filter()
-    return return_data()
+    return return_data(data_list=comments_list)
 
 
-@router.get('/test/cookies/')
+@blog_router.get('/test/cookies/')
 async def test(cookie: str = Cookie(None)):
     print(cookie)
     return return_data(data=cookie)
