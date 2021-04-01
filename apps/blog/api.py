@@ -5,7 +5,7 @@
 # @Author  : yuruhao
 from typing import List
 
-from fastapi import Cookie
+from fastapi import Cookie, Depends
 from sqlalchemy import Enum, and_
 from sqlalchemy.testing import in_
 

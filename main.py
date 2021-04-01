@@ -4,7 +4,7 @@
 # @Date    : 2021-03-17
 # @Author  : yuruhao
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException
 # from fastapi.openapi.docs import (
 #     get_redoc_html,
 #     get_swagger_ui_html,
@@ -15,7 +15,6 @@ from fastapi import FastAPI
 from apps.user import user_router
 from apps.blog import blog_router
 from apps.books import book_router
-
 
 app = FastAPI(title='简书', version='1.0.0',
               description='一个优质创作社区')
@@ -39,10 +38,6 @@ app = FastAPI(title='简书', version='1.0.0',
 #         swagger_css_url="/static/css/swagger-ui.css",
 #     )
 
-
 app.include_router(user_router, prefix='/user', tags=['用户中心接口'])
 app.include_router(blog_router, prefix='/blog', tags=['博客文章接口'])
 app.include_router(book_router, prefix='/book', tags=['书籍相关接口'])
-
-if __name__ == '__main__':
-    uvicorn.run('main:app', host='127.0.0.1', port=8000, reload=True, debug=True)
