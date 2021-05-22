@@ -6,6 +6,7 @@
 
 from fastapi import APIRouter
 
+from apps.blog.models import Article
 from apps.user.models import User
 from base.base_enum import LoginNameEnum
 from base.parsedata import return_data
@@ -40,4 +41,7 @@ async def user_profile(user_id: int):
     return return_data(data=user_obj)
 
 
-
+@user_router.get('/user/articles/{user_id}')
+async def user_articles(user_id: int):
+    articles = session.query(Article).filter(Article.user_id == user_id).all()
+    return return_data(data_list=articles)

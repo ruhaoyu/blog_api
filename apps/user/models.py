@@ -6,7 +6,7 @@
 from datetime import datetime
 
 from sqlalchemy import Column, Integer, String, Date, DateTime
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 
 from db.mysql import Base
 
@@ -26,7 +26,6 @@ class User(Base):
     main_page = Column(String(50))
     company = Column(String(30))
     school = Column(String(30), nullable=True)
-    blogs = relationship('Article')
+    test = Column(String(30), nullable=True)
     update_time = Column(DateTime, onupdate=datetime.now, default=datetime.now)
     create_time = Column(DateTime, default=datetime.now)
-    comments = relationship('Comment')

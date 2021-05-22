@@ -11,3 +11,5 @@ class ArticleStatusEnum(Enum):
     draft = 'draft'
     normal = 'normal'
     delete = 'delete'
+    test = 'test'
+    doing = 'doing'

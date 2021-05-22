@@ -11,7 +11,7 @@ from sqlalchemy.testing import in_
 
 from apps.blog.blog_enum import ArticleStatusEnum
 from apps.blog.items import ArticleItem, AddCommentItem
-from apps.blog.models import Article, Comment
+from apps.blog.models import Article, Comment, CommentOperate
 from base.parsedata import return_data
 from db.mysql import session
 
@@ -31,7 +31,6 @@ async def public_article(article: ArticleItem):
 @blog_router.get('/article/{article_id}')
 async def article_detail(article_id: int):
     article_obj = session.query(Article).get(article_id)
-    comments = article_obj.comments
     return return_data(data=article_obj)
 
 
@@ -47,7 +46,7 @@ async def like_article(article_id: int):
 @blog_router.get('/article/list/')
 def get_article_list(status: ArticleStatusEnum, article_type: str = 'public', free: bool = True,
                      user_id: int = Query(default=0)):
-    article_obj_list = session.query(Article).filter_by(status=status.value, type=article_type, free=free)
+    article_obj_list = session.query(Article).filter_by(type=article_type, free=free)
     if user_id:
         article_obj_list = article_obj_list.filter(Article.user_id == user_id)
     return return_data(data_list=article_obj_list.all())
@@ -61,9 +60,22 @@ async def add_comment(article_id: int, comment: AddCommentItem):
     return return_data()
 
 
+@blog_router.get('/comment/{comment_id}')
+async def comment_detail(comment_id: int):
+    comment = session.query(Comment).filter(Comment.id == comment_id).first()
+    return return_data(data=comment)
+
+
+@blog_router.get('/comment/operate/{id}')
+async def comment_operate_detail(id: int):
+    comment_operate = session.query(CommentOperate).filter(CommentOperate.id == id).first()
+    return return_data(data=comment_operate)
+
+
 @blog_router.post('/update/article/status')
 async def updata_article_status(status: ArticleStatusEnum, article_ids: List[int] = Query(...)):
-    session.query(Article).filter(Article.id.in_(article_ids)).update({'status': status})
+    print(status.value)
+    session.query(Article).filter(Article.id.in_(article_ids)).update({'status': status.value})
     session.commit()
     return return_data(data_list=article_ids)
 
